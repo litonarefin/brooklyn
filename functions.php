@@ -7,10 +7,13 @@
  * @package Brooklyn
  */
 
-if ( ! defined( '_S_VERSION' ) ) {
-	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
-}
+define( 'BROOKLYN_WP', wp_get_theme()->get( 'Name' ));
+define( 'BROOKLYN_VER', wp_get_theme()->get( 'Version' ));
+define( 'BROOKLYN_CSS', get_template_directory_uri().'/assets/css/');
+define( 'BROOKLYN_JS', get_template_directory_uri().'/assets/js/');
+define( 'BROOKLYN_PATH', get_template_directory());
+define( 'BROOKLYN_THEME_URI', get_template_directory_uri());
+define( 'AJAX_URL', esc_url_raw( admin_url('admin-ajax.php')));
 
 if ( ! function_exists( 'brooklyn_setup' ) ) :
 	/**
@@ -125,7 +128,7 @@ function brooklyn_widgets_init() {
 	register_sidebar(
 		array(
 			'name'          => esc_html__( 'Sidebar', 'brooklyn' ),
-			'id'            => 'sidebar-1',
+			'id'            => 'blog-sidebar',
 			'description'   => esc_html__( 'Add widgets here.', 'brooklyn' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
@@ -136,14 +139,41 @@ function brooklyn_widgets_init() {
 }
 add_action( 'widgets_init', 'brooklyn_widgets_init' );
 
+
+
+// Google Fonts
+function brooklyn_google_fonts_url() {
+    $font_url = '';
+    if ( 'off' !== _x( 'on', 'Google font: on or off', 'brooklyn' ) ) {
+        $font_url = add_query_arg( 'family', urlencode( 'Roboto: 400,500,700|Lato:400,700,900' ), "//fonts.googleapis.com/css" );
+    }
+    return $font_url;
+}
+
+
+
+
 /**
  * Enqueue scripts and styles.
  */
 function brooklyn_scripts() {
-	wp_enqueue_style( 'brooklyn-style', get_stylesheet_uri(), array(), _S_VERSION );
+
+	//CSS
+	wp_enqueue_style( 'brooklyn-style', get_stylesheet_uri(), array(), BROOKLYN_VER );
+	wp_enqueue_style( 'bootstrap', BROOKLYN_CSS . 'bootstrap.min.css');
+	wp_enqueue_style( 'simple-line-icons', BROOKLYN_CSS . 'simple-line-icons.css');
+	wp_enqueue_style( 'simple-line-icons', BROOKLYN_CSS . 'all.min.css');
+	wp_enqueue_style( 'font-awesome', BROOKLYN_CSS . 'font-awesome.min.css');
+	wp_enqueue_style( 'brooklyn-themes', BROOKLYN_CSS . 'themes.css');
+	wp_enqueue_style( 'brooklyn-google-fonts', quote_google_fonts_url() );
+
 	wp_style_add_data( 'brooklyn-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'brooklyn-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	
+	//JS
+	wp_enqueue_script( 'bootstrap', BROOKLYN_JS . 'bootstrap.min.js', array('jquery'), '', true );
+
+	wp_enqueue_script( 'brooklyn-navigation', BROOKLYN_JS . 'navigation.js', array(), BROOKLYN_VER, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
