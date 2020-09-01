@@ -53,7 +53,7 @@ if ( ! function_exists( 'brooklyn_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'brooklyn' ),
+				'main-menu' => esc_html__( 'Main Menu', 'brooklyn' ),
 			)
 		);
 
@@ -183,36 +183,26 @@ function brooklyn_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'brooklyn_scripts' );
 
-/**
- * Implement the Custom Header feature.
- */
+
+
+// Includes Files
 require get_template_directory() . '/inc/custom-header.php';
-
-/**
- * Custom template tags for this theme.
- */
 require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
 require get_template_directory() . '/inc/template-functions.php';
-
-/**
- * Customizer additions.
- */
 require get_template_directory() . '/inc/customizer.php';
+require_once get_template_directory().'/inc/class-wp-bootstrap-navwalker.php';
+require get_template_directory()  . '/inc/breadcrumb-trail.php';
+require_once( get_template_directory() . '/admin/admin.php');
 
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
+if ( defined( 'JETPACK__VERSION' ) ) { 
+	require get_template_directory() . '/inc/jetpack.php'; 
+}
+if ( class_exists( 'WooCommerce' ) ) { 
+	require get_template_directory() . '/inc/woocommerce.php'; 
+}
+if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
+	require_once( get_template_directory()  . '/inc/class-tgm-plugin-activation.php');
+	require_once( get_template_directory()  . '/inc/required-plugins.php');
 }
 
-/**
- * Load WooCommerce compatibility file.
- */
-if ( class_exists( 'WooCommerce' ) ) {
-	require get_template_directory() . '/inc/woocommerce.php';
-}
+

@@ -138,7 +138,9 @@ header.scrolled {
 	}
 
 }
-
+body.admin-bar header {
+	margin-top: 32px;
+}
 
 
 

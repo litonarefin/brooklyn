@@ -28,40 +28,32 @@
     <header class="main-header fixed-top">
         <div class="container">
             <nav class="navbar navbar-expand-md">
-                <a class="navbar-brand" href="#"><img src="images/logo.png" alt="Logo"></a>
+            	<?php //the_custom_logo();?>
+                <a class="navbar-brand" href="#">
+                	<img src="<?php echo BROOKLYN_THEME_URI;?>/assets/images/logo.png" alt="Logo">
+                </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
-                        i.fa
+                        <i class="fa fa-bars"></i>
                     </span>
                 </button>
 
-                
+
                 <div class="collapse navbar-collapse" id="main-menu">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                Pages
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Page 1</a>
-                                <a class="dropdown-item" href="#">Page 2</a>
-                                <a class="dropdown-item" href="#">Page 3</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="#">Works</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
-                        </li>
-                    </ul>
+                    <?php
+                        $args = array(
+                            'theme_location'    => 'main-menu',
+                            'depth'             => 3,
+                            'container'         => false,
+                            'container'         => '',
+                            'container_class'   => '',
+                            'menu_class'        => 'navbar-nav',
+                            'walker'            => new WP_Bootstrap_Navwalker(),
+                            'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+                        );
+                      wp_nav_menu($args);
+                    ?>
                 </div>
 
                 <div class="menu-download-btn float-right">
@@ -71,37 +63,3 @@
             </nav>
         </div><!-- /.container -->
     </header><!-- /.main-header -->
-
-
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$brooklyn_description = get_bloginfo( 'description', 'display' );
-			if ( $brooklyn_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $brooklyn_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
-
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'brooklyn' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
