@@ -165,13 +165,16 @@ function brooklyn_scripts() {
 	wp_enqueue_style( 'simple-line-icons', BROOKLYN_CSS . 'all.min.css');
 	wp_enqueue_style( 'font-awesome', BROOKLYN_CSS . 'font-awesome.min.css');
 	wp_enqueue_style( 'brooklyn-themes', BROOKLYN_CSS . 'themes.css');
-	wp_enqueue_style( 'brooklyn-google-fonts', quote_google_fonts_url() );
+	wp_enqueue_style( 'brooklyn-google-fonts', brooklyn_google_fonts_url() );
 
 	wp_style_add_data( 'brooklyn-style', 'rtl', 'replace' );
 
-	
+
 	//JS
+	wp_enqueue_script( 'popper', BROOKLYN_JS . 'popper.min.js', array('jquery'), '', true );
 	wp_enqueue_script( 'bootstrap', BROOKLYN_JS . 'bootstrap.min.js', array('jquery'), '', true );
+	wp_enqueue_script( 'brooklyn-scripts', BROOKLYN_JS . 'scripts.js', array('jquery'), '', true );
+	
 
 	wp_enqueue_script( 'brooklyn-navigation', BROOKLYN_JS . 'navigation.js', array(), BROOKLYN_VER, true );
 
