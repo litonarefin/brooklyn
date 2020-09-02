@@ -59,19 +59,24 @@ if ( ! function_exists( 'brooklyn_entry_footer' ) ) :
 	function brooklyn_entry_footer() {
 		// Hide category and tag text for pages.
 		if ( 'post' === get_post_type() ) {
-			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( esc_html__( ', ', 'brooklyn' ) );
-			if ( $categories_list ) {
-				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'brooklyn' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			}
+			
+			printf( '<div class="author-meta">' . brooklyn_blog_post_author_avatar() . '</div>' );
 
-			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'brooklyn' ) );
-			if ( $tags_list ) {
-				/* translators: 1: list of tags. */
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'brooklyn' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			}
+			echo '<div class="entry-meta">';
+				/* translators: used between list items, there is a space after the comma */
+				$categories_list = get_the_category_list( esc_html__( ', ', 'brooklyn' ) );
+				if ( $categories_list ) {
+					/* translators: 1: list of categories. */
+					printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'brooklyn' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				}
+
+				/* translators: used between list items, there is a space after the comma */
+				$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'brooklyn' ) );
+				if ( $tags_list ) {
+					/* translators: 1: list of tags. */
+					printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'brooklyn' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				}
+			echo '</div>';
 		}
 
 		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
@@ -163,3 +168,11 @@ if ( ! function_exists( 'wp_body_open' ) ) :
 		do_action( 'wp_body_open' );
 	}
 endif;
+
+
+
+if ( ! function_exists( 'brooklyn_blog_post_author_avatar' ) ) {
+	function brooklyn_blog_post_author_avatar(){
+		echo get_avatar( get_the_author_meta('user_email'), 60,'', '', array('class' => 'author-img rounded-circle'));
+	}
+}

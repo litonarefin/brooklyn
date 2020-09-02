@@ -144,7 +144,7 @@ add_action( 'widgets_init', 'brooklyn_widgets_init' );
 function brooklyn_google_fonts_url() {
     $font_url = '';
     if ( 'off' !== _x( 'on', 'Google font: on or off', 'brooklyn' ) ) {
-        $font_url = add_query_arg( 'family', urlencode( 'Montserrat: 300,400,500,600,700,800,900&display=swap' ), "//fonts.googleapis.com/css" );
+        $font_url = add_query_arg( 'family', urlencode( 'Montserrat: 300,400,500,600,700,800,900&display=swap|Muli:300,400,500,700,800,900' ), "//fonts.googleapis.com/css" );
     }
     return $font_url;
 }
