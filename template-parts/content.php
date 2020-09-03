@@ -39,15 +39,20 @@
 		?>
 	</div><!-- .entry-content -->
 
+	
+	<?php if ( 'post' === get_post_type() ) : ?>
 
-	<footer class="entry-footer">
-		<div class="post-bottom">
-			<?php 
-				brooklyn_posted_by();
-				brooklyn_entry_footer(); 
-				brooklyn_read_more();
-			?>
-		</div>
-	</footer><!-- .entry-footer -->
+		<footer class="entry-footer">
+			<div class="post-bottom">
+				<?php 
+					brooklyn_posted_by();
+					brooklyn_entry_footer(); 
+					brooklyn_read_more();
+				?>
+			</div>
+		</footer><!-- .entry-footer -->
+
+	<?php endif; ?>
+
 
 </article><!-- #post-<?php the_ID(); ?> -->
