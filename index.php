@@ -30,7 +30,7 @@ get_header();
 						} } else { 
 							get_template_part( 'template-parts/content', 'none' ); 
 						}
-                        echo function_exists('quote_pagination_style') ? quote_pagination_style() : posts_nav_link(); 
+                        echo function_exists('brooklyn_pagination') ? brooklyn_pagination() : posts_nav_link(); 
                     ?>
                 </div>
 
