@@ -296,10 +296,14 @@ article .entry-title {
 article .entry-title a {
 	color: #4c4c4c;
 }
+article .entry-footer {
+	padding-top: 2.25rem;
+	/* display: inline-block; */
+}
+
 article .entry-content p {
 	color: #4c4c4c;
 	font-size: 1rem;
-	margin-bottom: 2.25rem;
 }
 .post-bottom {
 	color: #999;
@@ -323,7 +327,7 @@ article .entry-content p {
 .entry-meta i {
 	margin-right: 5px;
 }
-.entry-content .read-more {
+.entry-footer .read-more {
 	background-color: #662d91;
 	border: 1px solid #662d91;
 	border-radius: 0;
@@ -335,7 +339,7 @@ article .entry-content p {
 	padding: 0 2.15rem;
 	text-transform: uppercase;
 }
-.entry-content .read-more:hover {
+.entry-footer .read-more:hover {
 	background-color: #fff;
 	color: #662d91;
 }

@@ -35,3 +35,11 @@ function brooklyn_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'brooklyn_pingback_header' );
+
+
+// Read More
+function brooklyn_read_more(){ ?>
+	<a href="<?php the_permalink();?>" class="btn read-more">
+		<?php echo esc_html__('Read more', 'brooklyn');?>
+	</a>
+<?php }
