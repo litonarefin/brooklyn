@@ -297,7 +297,6 @@ header.scrolled {
 }
 
 article.post {
-	border-bottom: 2px solid #f5f5f5;
 	font-family: 'Muli', sans-serif;
 	padding: 3.75rem 0;
 }
@@ -450,6 +449,27 @@ article .blockquote {
 	margin: 2.125rem 0 3.875rem 3.75rem;
 	padding: 1.25rem 1.5rem;
 }
+
+article.post-password-required input[type="password"] {
+    border: 1px solid #e2e2e2;
+}
+article.post-password-required input[type="submit"]:hover,
+.page-links a:hover,
+.page-links .page-numbers.current,
+.page-links .post-page-numbers.current {
+  background: #662d91;
+  color: #fff;
+  outline: 0;
+}
+.page-links{
+  padding-top: 20px;
+}
+.page-links a, .page-links .post-page-numbers.current{
+  padding: 10px 15px;  
+}
+
+
+
 .single .post-bottom {
 	float: left;
 	margin-top: 3.25rem;
@@ -921,6 +941,7 @@ footer.site-footer {
 	color: #4c4c4c;
 	font-family: 'Muli', sans-serif;
 }
+article.post-password-required input[type="submit"],
 .comment-content .btn {
 	background-color: #662d91;
 	border-radius: 0;
@@ -930,6 +951,10 @@ footer.site-footer {
 	line-height: 40px;
 	padding: 0 1rem;
 	text-transform: capitalize;
+}
+article.post-password-required input[type="submit"]{
+	line-height: 50px;
+	padding: 0 2em;
 }
 .comment-list .children {
 	padding-left: 3.75rem;
