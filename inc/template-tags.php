@@ -163,8 +163,73 @@ if ( ! function_exists( 'brooklyn_blog_post_author_avatar' ) ) {
 	}
 }
 
+// Comments Numbers
 if ( ! function_exists( 'brooklyn_comments_number' ) ) {
 	function brooklyn_comments_number(){
 		comments_number( esc_html__('0 Comment','brooklyn'), esc_html__('1 Comment','brooklyn'), esc_html__('% Comments','brooklyn') );
 	}
+}
+
+
+
+
+
+/*===================================================================================
+ * Brooklyn Comments
+ * =================================================================================*/
+
+if(!function_exists('brooklyn_comment')){
+
+    function brooklyn_comment($comment, $args, $depth){
+
+        $GLOBALS['comment'] = $comment;
+        switch ( $comment->comment_type ) :
+        case 'pingback' :
+        case 'trackback' :
+    ?>
+    <li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
+
+        <p><?php esc_html('Pingback:','quote');?> <?php comment_author_link(); ?> <?php edit_comment_link( esc_html__( '(Edit)', 'quote' ), '<span class="edit-link">', '</span>' ); ?></p>
+        <?php
+        break;
+        default :
+
+        global $post;
+        ?>
+
+        <li <?php comment_class('comment parent media'); ?> id="li-comment-<?php comment_ID(); ?>">
+
+            <div class="comment-item">
+                <div class="author-avatar media-left">
+                    <?php echo get_avatar( $comment, 60,'', '', array('class' => 'author-img rounded-circle')); ?>
+                </div><!-- /.author-avatar -->
+                <div class="comment-body media-body">
+                    <div class="comment-metadata">
+                        <span class="name">
+                        	<?php comment_author_link(); ?>
+                        </span>
+                        <span class="quote-btn read-more reply">
+                        	<?php comment_reply_link( array_merge( $args, array( 'reply_text' => esc_html__( 'Reply', 'quote' ), 'after' => '', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>		
+                        	<i class="fa fa-mail-reply"></i>
+                        </span>
+                        <span class="time">
+                            <time datetime="<?php echo get_the_modified_date( 'c' );?>">
+                            	<?php echo get_the_date('M j, Y'); ?>
+                            	<?php echo esc_html__('at','quote');?> <?php echo get_comment_time(); ?>		
+                            </time>
+                        </span>
+                    </div><!-- /.comment-metadata -->
+                    <p class="description">
+                        <?php echo get_comment_text(); ?>
+                    </p>
+                </div><!--/.comment-body-->
+            </div><!-- /.comment-item -->
+
+			<div class="btm-brder-single"></div>
+
+            <?php
+            break;
+            endswitch;
+        }
+
 }

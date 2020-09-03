@@ -24,7 +24,7 @@ if ( post_password_required() ) {
 
 	<?php
 	// You can start editing here -- including this comment!
-	if ( have_comments() ) :
+	if ( have_comments() ) {
 		?>
 		<h2 class="comments-title">
 			<?php
@@ -46,17 +46,17 @@ if ( post_password_required() ) {
 			?>
 		</h2><!-- .comments-title -->
 
-		<?php the_comments_navigation(); ?>
-
 		<ol class="comment-list">
 			<?php
-			wp_list_comments(
-				array(
-					'style'      => 'ol',
-					'short_ping' => true,
-				)
-			);
-			?>
+                wp_list_comments( array(
+                    'style'       => 'li',
+                    'short_ping'  => true,
+                    'max_depth'   => 20,
+                    'callback' 	  => 'brooklyn_comment',
+                    'avatar_size' => 90
+                ) );
+                paginate_comments_links();
+            ?>			
 		</ol><!-- .comment-list -->
 
 		<?php
@@ -69,9 +69,41 @@ if ( post_password_required() ) {
 			<?php
 		endif;
 
-	endif; // Check for have_comments().
-
-	comment_form();
+	} // Check for have_comments().
 	?>
+
+	<div class="respond">
+		<?php
+			$commenter = wp_get_current_commenter();
+			$req = get_option( 'require_name_email' );
+			$aria_req = ( $req ? " aria-required='true'" : '' );
+			$fields =  array(
+				'author' => '<input id="author" class="form-control col mr-2" name="author" type="text" placeholder="' . esc_html__('Name', 'brooklyn') . '" value="" size="30"' . $aria_req . '/>',
+				'email'  => '<input id="email" class="form-control col ml-2" name="email" type="email" placeholder="' . esc_html__('E-Mail (required)', 'brooklyn') . '" value="" size="30"' . $aria_req . '/>',
+				'url'  => '<input id="url" class="form-control" name="url" type="url" placeholder="' . esc_html__('Website', 'brooklyn') . '" value="">'
+			);
+
+			$comments_args = array(
+				'fields' =>  $fields,
+				'id_form'          			=> 'commentform',
+				'class_form'          		=> 'comment-form',
+				'title_reply'       		=> esc_html__( 'Post a Comment', 'brooklyn' ),
+				'title_reply_to'    		=> esc_html__( 'Post a Comment to %s', 'brooklyn' ),
+				'cancel_reply_link' 		=> esc_html__( 'Cancel Comment', 'brooklyn' ),
+				'label_submit'      		=> esc_html__( 'Post Comment', 'brooklyn' ),
+				'class_submit'      		=> 'btn',
+				'comment_notes_before'      => '',
+				'comment_notes_after' 		=> '',
+				'id_submit'					=> 'submit',
+				'comment_field'             => '<textarea id="comment" class="form-control" name="comment" placeholder="' . esc_html__(' Write your comment here', 'brooklyn') . '" cols="40" rows="10" required></textarea>',
+				'label_submit'              => esc_html__( 'Post Comment' , 'brooklyn' )
+				);
+
+
+			ob_start();
+			comment_form( $comments_args);
+		?>
+
+	</div> <!-- respond -->
 
 </div><!-- #comments -->

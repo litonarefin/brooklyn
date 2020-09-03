@@ -703,3 +703,125 @@ footer.site-footer {
 .copyright {
 	margin-bottom: .5rem;
 }
+
+
+
+
+/* Comment Section */
+
+.comments {
+	margin-top: 5rem;
+}
+.comments .title {
+	color: #262626;
+	font-family: 'Muli', sans-serif;
+	font-size: 1.75em;
+	font-weight: 800;
+	text-transform: capitalize;
+}
+.comment-list {
+	border-bottom: 1px solid #cfd8dc;
+	display: inline-block;
+	margin: 2.75em 0 0;
+	padding: 0 0 .89em;
+	width: 100%;
+}
+.comment-body {
+	margin-bottom: 3.75rem;
+}
+.comment-list .author-avatar {
+	max-width: 90px;
+	margin-right: 1.75rem;
+}
+.comment-content {
+	margin-top: -3px;
+}
+.comment-content .name {
+	color: #262626;
+	display: block;
+	font-size: 1.25rem;
+	font-weight: 700;
+	margin: 0;
+	text-transform: capitalize;
+}
+.comment-content a {
+	color: #262626;
+}
+.comment-content .time {
+	color: #999;
+	display: inline-block;
+	font-family: 'Muli', sans-serif;
+	font-size: 1rem;
+	font-weight: 700;
+	margin-bottom: 1.25rem;
+}
+.comment-content p {
+	color: #4c4c4c;
+	font-family: 'Muli', sans-serif;
+}
+.comment-content .btn {
+	background-color: #662d91;
+	border-radius: 0;
+	color: #fff;
+	font-size: 1rem;
+	font-weight: 700;
+	line-height: 40px;
+	padding: 0 1rem;
+	text-transform: capitalize;
+}
+.comment-list .children {
+	padding-left: 3.75rem;
+}
+
+.comment-list li {
+	list-style: none;
+}
+
+/* Comment Form */
+
+.respond {
+	margin-top: 5rem;
+}
+.comment-form {
+	margin-top: 3.75rem;
+}
+.comment-form .form-control {
+	border-radius: 0;
+	font-family: 'Muli', sans-serif;
+	font-size: 1rem;
+}
+.comment-form .form-control:focus {
+	border-color: #e2e7ea;
+	box-shadow: none;
+	outline: 0;
+}
+.comment-form input:not([type="checkbox"]) {
+	border: 2px solid #e2e7ea;
+	color: #999;
+	display: inline-block;
+	height: 60px;
+	margin-bottom: 1.875rem;
+	padding: 15px;
+}
+.comment-form input[type="email"] {
+	float: right;
+}
+.comment-form textarea  {
+	border: 2px solid #e2e7ea;
+	margin-bottom: 1.875rem;
+	padding: 15px;
+}
+.comment-form input[type="submit"] {
+	background-color: #662d91;
+	border: none;
+	border-radius: 0;
+	color: #fff;
+	font-weight: 700;
+	margin-bottom: 0;
+	padding: 0 3.75rem;
+	text-transform: uppercase;
+}
+.comment-form input[type="submit"]:focus {
+	border: none;
+	box-shadow: none;
+}
