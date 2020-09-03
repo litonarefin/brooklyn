@@ -17,7 +17,11 @@ ul {
 	margin: 0;
 	padding: 0;
 }
+a{
+	color: #662d91;
+}
 a:hover {
+	color: #662d91;
 	text-decoration: none;
 }
 a:focus,
@@ -362,6 +366,26 @@ article .entry-content p {
 	background-color: #fff;
 	color: #662d91;
 }
+.post-navigation {
+	display: inline-block;
+	border-top: 2px solid #f5f5f5; 
+	margin: 2.5em 0 0;
+	width: 100%;
+}
+.post-navigation a {
+	color: #662d91;
+	text-transform: capitalize; 
+}
+.post-navigation .nav-links {
+	padding-top: 3em;
+}
+.post-navigation .nav-links .nav-previous {
+  float: left; 
+}
+.post-navigation .nav-links .nav-next {
+  float: right; 
+}
+
 .page-navigation {
 	padding: 7.5rem 0 0;
 }
@@ -383,6 +407,137 @@ article .entry-content p {
 	background-color: #662d91;
 	color: #fff;
 }
+
+
+
+
+/* Blog Single */
+
+.single article.post {
+	padding-bottom: 0;
+}
+.single .entry-meta {
+	color: #999;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	font-size: 16px;
+	margin-bottom: 3.5rem;
+}
+.single .entry-meta a {
+	color: #999;
+}
+.single .entry-meta span {
+	margin-right: 15px;
+}
+.single .entry-meta i {
+	margin-right: 8px;
+}
+.single article .entry-title {
+	margin-bottom: 1.25rem;
+}
+.single article .entry-content p {
+	margin-bottom: 1.75rem;
+}
+article .blockquote {
+	background-color: #fafafa;
+	border-left: 5px solid #662d91;
+	color: #4c4c4c;
+	display: inline-block;
+	font-size: 1.125rem;
+	font-style: italic;
+	font-weight: 700;
+	margin: 2.125rem 0 3.875rem 3.75rem;
+	padding: 1.25rem 1.5rem;
+}
+.single .post-bottom {
+	float: left;
+	margin-top: 3.25rem;
+	width: 100%;
+}
+.single .tags a {
+	background-color: #f5f5f5;
+	color: #999;
+	float: left;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 40px;
+	margin-right: 0.9375rem;
+	padding: 0 1rem;
+}
+.share button {
+	background-color: #662d91;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	color: #fff;
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 40px;
+	padding: 0 1.125rem;
+	text-transform: capitalize;
+}
+.share button:after {
+	display: none;
+}
+.share button:focus {
+	outline: 0;
+}
+.share button i {
+	margin-left: 7px;
+}
+.share .dropdown-menu {
+	border: none;
+	min-width: 83px;
+}
+.share .dropdown-menu a {
+	border: none; 
+	color: #fff;
+	float: left;
+	font-size: 1.25em;
+	padding: 6px 15px;
+	text-align: center;
+	width: 100%;
+}
+.share .dropdown-menu .twitter {
+	background-color: #1da1f2;
+}
+.share .dropdown-menu .facebook {
+	background-color: #3b5998;
+}
+.share .dropdown-menu .pinterest {
+	background-color: #bd081c;
+}
+.author-bio {
+	border-top: 2px solid #f5f5f5;
+	border-bottom: 2px solid #f5f5f5;
+	display: inline-block;
+	margin: 3rem 0 4em;
+	padding: 3.75em 0 3.75em;
+	width: 100%;
+}
+.author-avatar {
+	margin-right: 1.875rem;
+	max-width: 140px;
+}
+.author-bio .name {
+	color: #262626;
+	font-family: 'Monsterrat', sans-serif;
+	font-size: 1.25em;
+	font-weight: 700;
+	text-transform: capitalize;
+}
+.single article .entry-content .author-bio p {
+	margin-bottom: 1.25rem;
+}
+.author-social a {
+	color: #999;
+	display: inline-block;
+	font-size: 1.4em;
+	margin: 5px 15px 5px 0;
+}
+
+
 
 /* Call To Action */
 
@@ -712,6 +867,12 @@ footer.site-footer {
 .comments {
 	margin-top: 5rem;
 }
+.comment-content{
+	overflow: hidden;
+}
+.comment-content a {
+	word-wrap: break-word;
+}
 .comments .title {
 	color: #262626;
 	font-family: 'Muli', sans-serif;
@@ -725,6 +886,7 @@ footer.site-footer {
 	margin: 2.75em 0 0;
 	padding: 0 0 .89em;
 	width: 100%;
+	list-style: none;
 }
 .comment-body {
 	margin-bottom: 3.75rem;
@@ -771,9 +933,6 @@ footer.site-footer {
 }
 .comment-list .children {
 	padding-left: 3.75rem;
-}
-
-.comment-list li {
 	list-style: none;
 }
 
@@ -824,4 +983,36 @@ footer.site-footer {
 .comment-form input[type="submit"]:focus {
 	border: none;
 	box-shadow: none;
+}
+
+article dl a,
+.comments-area dl a {
+  color: #737373;
+}
+article table,
+.comments-area table {
+  font-size: 14px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+article table a,
+.comments-area table a {
+  color: #737373;
+}
+article table tr,
+.comments-area table tr {
+  border: 1px solid #666;
+  padding: 5px;
+}
+article table tr td,
+.comments-area table tr td {
+  border: 1px solid #666;
+  padding: 5px 10px;
+}
+article table tr th,
+.comments-area table tr th { 
+  border: 1px solid #666; 
+  padding: 5px 10px; 
+  font-weight: normal;
+  text-align: left; 
 }

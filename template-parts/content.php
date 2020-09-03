@@ -28,7 +28,12 @@
 				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 			endif;
 			
-			the_excerpt();
+			if(is_single()){
+				the_content();
+			}else{
+				the_excerpt();	
+			}
+			
 
 			wp_link_pages(
 				array(
@@ -45,9 +50,11 @@
 		<footer class="entry-footer">
 			<div class="post-bottom">
 				<?php 
-					brooklyn_posted_by();
-					brooklyn_entry_footer(); 
-					brooklyn_read_more();
+					brooklyn_blog_post_author_avatar();
+					brooklyn_entry_footer();
+					if(!is_single()){ 
+						brooklyn_read_more();
+					}
 				?>
 			</div>
 		</footer><!-- .entry-footer -->

@@ -41,15 +41,11 @@ if ( ! function_exists( 'brooklyn_posted_by' ) ) :
 	 * Prints HTML with meta information for the current author.
 	 */
 	function brooklyn_posted_by() {
-		$byline = sprintf(
+		echo sprintf(
 			/* translators: %s: post author. */
 			esc_html_x( ' %s', 'post author', 'brooklyn' ),
 			'<span class="author vcard"><a class="url fn n author-name" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
-		);
-		
-		$post_avatar = brooklyn_blog_post_author_avatar();
-
-		echo $post_avatar . $byline; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	}
 endif;
@@ -159,6 +155,7 @@ if ( ! function_exists( 'brooklyn_blog_post_author_avatar' ) ) {
 	function brooklyn_blog_post_author_avatar(){
 		echo '<div class="author-meta">';
 		echo get_avatar( get_the_author_meta('user_email'), 60,'', '', array('class' => 'author-img rounded-circle'));
+		brooklyn_posted_by();
 		echo '</div>';
 	}
 }
@@ -197,35 +194,31 @@ if(!function_exists('brooklyn_comment')){
         global $post;
         ?>
 
-        <li <?php comment_class('comment parent media'); ?> id="li-comment-<?php comment_ID(); ?>">
+        <li <?php comment_class('comment parent'); ?> id="li-comment-<?php comment_ID(); ?>">
 
-            <div class="comment-item">
-                <div class="author-avatar media-left">
-                    <?php echo get_avatar( $comment, 60,'', '', array('class' => 'author-img rounded-circle')); ?>
-                </div><!-- /.author-avatar -->
-                <div class="comment-body media-body">
-                    <div class="comment-metadata">
-                        <span class="name">
-                        	<?php comment_author_link(); ?>
-                        </span>
-                        <span class="quote-btn read-more reply">
-                        	<?php comment_reply_link( array_merge( $args, array( 'reply_text' => esc_html__( 'Reply', 'quote' ), 'after' => '', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>		
-                        	<i class="fa fa-mail-reply"></i>
-                        </span>
-                        <span class="time">
-                            <time datetime="<?php echo get_the_modified_date( 'c' );?>">
-                            	<?php echo get_the_date('M j, Y'); ?>
-                            	<?php echo esc_html__('at','quote');?> <?php echo get_comment_time(); ?>		
-                            </time>
-                        </span>
-                    </div><!-- /.comment-metadata -->
-                    <p class="description">
-                        <?php echo get_comment_text(); ?>
-                    </p>
-                </div><!--/.comment-body-->
-            </div><!-- /.comment-item -->
 
-			<div class="btm-brder-single"></div>
+	        <div class="comment-body media">
+				
+				<?php echo get_avatar( $comment, 60,'', '', array('class' => 'rounded-circle author-avatar')); ?>
+
+	            <div class="comment-content media-body">
+	                
+	                <span class="name">
+	                	<?php comment_author_link(); ?>
+	                </span>
+                    <span class="time">
+                        <time datetime="<?php echo get_the_modified_date( 'c' );?>">
+                        	<?php echo get_the_date('M j, Y'); ?>
+                        	<?php echo esc_html__('at','quote');?> <?php echo get_comment_time(); ?>		
+                        </time>
+                    </span>
+	                <p>
+	                    <?php echo get_comment_text(); ?>
+	                </p>
+	                <?php comment_reply_link( array_merge( $args, array( 'reply_text' => esc_html__( 'Reply', 'quote' ), 'after' => '', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+	            </div><!-- /.comment-content -->
+	        </div><!--/.comment-body-->
+
 
             <?php
             break;
@@ -233,3 +226,14 @@ if(!function_exists('brooklyn_comment')){
         }
 
 }
+
+
+
+// Add Class on Comment Reply Link
+add_filter('comment_reply_link', 'brooklyn_comments_reply_link_class');
+
+function brooklyn_comments_reply_link_class($class){
+    $class = str_replace("class='comment-reply-link", "class='btn reply-btn", $class);
+    return $class;
+}
+
