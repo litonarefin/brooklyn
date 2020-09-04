@@ -25,7 +25,7 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'brooklyn' ); ?></a>
 
-    <header class="main-header fixed-top">
+    <header class="main-header">
         <div class="container">
             <nav class="navbar navbar-expand-md">
             	<?php //the_custom_logo();?>
@@ -63,3 +63,5 @@
             </nav>
         </div><!-- /.container -->
     </header><!-- /.main-header -->
+
+    <?php get_template_part( "blog","header" );?>

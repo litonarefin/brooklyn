@@ -186,7 +186,7 @@ if(!function_exists('brooklyn_comment')){
     ?>
     <li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
 
-        <p><?php esc_html('Pingback:','quote');?> <?php comment_author_link(); ?> <?php edit_comment_link( esc_html__( '(Edit)', 'quote' ), '<span class="edit-link">', '</span>' ); ?></p>
+        <p><?php esc_html('Pingback:','brooklyn');?> <?php comment_author_link(); ?> <?php edit_comment_link( esc_html__( '(Edit)', 'brooklyn' ), '<span class="edit-link">', '</span>' ); ?></p>
         <?php
         break;
         default :
@@ -209,13 +209,13 @@ if(!function_exists('brooklyn_comment')){
                     <span class="time">
                         <time datetime="<?php echo get_the_modified_date( 'c' );?>">
                         	<?php echo get_the_date('M j, Y'); ?>
-                        	<?php echo esc_html__('at','quote');?> <?php echo get_comment_time(); ?>		
+                        	<?php echo esc_html__('at','brooklyn');?> <?php echo get_comment_time(); ?>		
                         </time>
                     </span>
 	                <p>
 	                    <?php echo get_comment_text(); ?>
 	                </p>
-	                <?php comment_reply_link( array_merge( $args, array( 'reply_text' => esc_html__( 'Reply', 'quote' ), 'after' => '', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+	                <?php comment_reply_link( array_merge( $args, array( 'reply_text' => esc_html__( 'Reply', 'brooklyn' ), 'after' => '', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 	            </div><!-- /.comment-content -->
 	        </div><!--/.comment-body-->
 

@@ -71,17 +71,6 @@ input[type=email], input[type=password], input[type=search], input[type=tel], in
 	position: relative;
 	text-transform: capitalize;
 }
-.section-title:before {
-	content: "";
-	background-color: #662d91;
-	height: 5px;
-	width: 120px;
-	left: 50%;
-	margin-left: -60px;
-	bottom: 0;
-	position: absolute;
-
-}
 .section-top p {
 	color: #737373;
 	font-size: 1.25rem;
@@ -89,29 +78,61 @@ input[type=email], input[type=password], input[type=search], input[type=tel], in
 	line-height: 25px;
 }
 .gradient-overlay {
-	background-image: -moz-linear-gradient( 45deg, rgb(205,64,143) 0%, rgb(9,79,195) 100%);
-	background-image: -webkit-linear-gradient( 45deg, rgb(205,64,143) 0%, rgb(9,79,195) 100%);
-	background-image: -ms-linear-gradient( 45deg, rgb(205,64,143) 0%, rgb(9,79,195) 100%);
-	height: 100%;
-	width: 100%;
-	left: 0;
-	top: 0;
-	opacity: .75;
-	position: absolute;
-	z-index: -1;
+	background-image: -moz-linear-gradient( 45deg, rgb(9,79,195) 0%, rgb(205,64,143) 100%);
+	background-image: -webkit-linear-gradient( 45deg, rgb(9,79,195) 0%, rgb(205,64,143) 100%);
+	background-image: -ms-linear-gradient( 45deg, rgb(9,79,195) 0%, rgb(205,64,143) 100%);
+}
+.brklyn-page .overlay {
+    background-color: rgba(13, 71, 161, 0.85);
+}
+.brklyn-page .section-padding {
+    padding: 3.5em 0;
+}
+.brklyn-page .section-title {
+    color: #fff;
+    font-size: 1.5625rem;
+    margin: 0 0 7px;
+    font-weight: 900;
+    padding-bottom: .5rem;
+    text-transform: uppercase;
+}
+.brklyn-page .breadcrumb {
+    background-color: transparent;
+    border-radius: 0;
+    margin: 5px 0 0;
+    padding: 0;
+}
+.brklyn-page .breadcrumb li {
+    color: #fff;
+    font-size: 0.9375em;
+    position: relative;
+}
+.brklyn-page .breadcrumb a {
+    color: #fff;
+    margin-right: 8px;
+    text-transform: capitalize;
+}
+.breadcrumb-item+.breadcrumb-item {
+    padding-left: 4px;
+}
+.breadcrumb-item+.breadcrumb-item::before{
+	color: #fff;
 }
 .background-bg {
-	background-size: cover;
-	background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
-
 /* Main Menu */
-
 .main-header {
-	border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+	box-shadow: 0 0 10px rgba(0,0,0,.2);
+	background-color: #fff;
+}
+.logged-in.admin-bar .main-header.fixed-top{
+	top: 32px;
 }
 .navbar-nav li a {
-	color: #fff;
+	color: #262626;
 	font-size: 14px;
 	font-weight: 700;
 	line-height: 45px;
@@ -276,8 +297,6 @@ header.scrolled {
 
 .breadcrumb {
 	color: #fff;
-	align-items: center;
-	justify-content: center;
 	margin: 0;
 	padding: 0;
 	position: relative;
