@@ -28,10 +28,8 @@
     <header class="main-header">
         <div class="container">
             <nav class="navbar navbar-expand-md">
-            	<?php //the_custom_logo();?>
-                <a class="navbar-brand" href="#">
-                	<img src="<?php echo BROOKLYN_THEME_URI;?>/assets/images/logo.png" alt="Logo">
-                </a>
+            	
+                <?php brooklyn_brand_logo();?>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
@@ -55,10 +53,11 @@
                       wp_nav_menu($args);
                     ?>
                 </div>
-
+<!-- 
                 <div class="menu-download-btn float-right">
                     <button class="btn download-btn">Download Now</button>
-                </div><!-- /.menu-download-btn -->
+                </div> -->
+                <!-- /.menu-download-btn -->
 
             </nav>
         </div><!-- /.container -->

@@ -94,3 +94,24 @@ if(!( function_exists('brooklyn_pagination') )){
 		}
 	}
 }
+
+
+
+
+
+function brooklyn_brand_logo(){ 
+
+    if( function_exists( 'the_custom_logo' ) && has_custom_logo() ){
+        the_custom_logo();
+    } else{ ?>
+        <div class="d-flex flex-column">
+            <a class="navbar-brand hidden-xs site-title p-2" href="<?php echo esc_url( home_url('/') ); ?>" title="<?php esc_html(bloginfo( 'name' )); ?> - <?php esc_html(bloginfo( 'description' )); ?>">
+                <?php esc_html(bloginfo( 'name' )); ?>
+            </a>
+            <p class="site-description p-2">
+                <?php esc_html(bloginfo( 'description' )); ?>                            
+            </p>                    
+        </div>
+    <?php }
+
+}

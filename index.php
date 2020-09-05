@@ -19,7 +19,7 @@ get_header();
     <div class="padding">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-9">
 					<?php if ( have_posts() ) { while ( have_posts() ) { the_post(); 
 							/* Include the Post-Format-specific template for the content.
 							 * If you want to override this in a child theme, then include a file
@@ -34,7 +34,7 @@ get_header();
                     ?>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                 	<?php get_sidebar('blog-sidebar');?>
                 </div>
             </div>

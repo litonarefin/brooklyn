@@ -77,6 +77,9 @@ input[type=email], input[type=password], input[type=search], input[type=tel], in
 	font-weight: 500;
 	line-height: 25px;
 }
+.brklyn-gray-bg{
+	background-color: #f1f1f1;
+}
 .gradient-overlay {
 	background-image: -moz-linear-gradient( 45deg, rgb(9,79,195) 0%, rgb(205,64,143) 100%);
 	background-image: -webkit-linear-gradient( 45deg, rgb(9,79,195) 0%, rgb(205,64,143) 100%);
@@ -86,7 +89,7 @@ input[type=email], input[type=password], input[type=search], input[type=tel], in
     background-color: rgba(13, 71, 161, 0.85);
 }
 .brklyn-page .section-padding {
-    padding: 3.5em 0;
+    padding: 1.5em 0;
 }
 .brklyn-page .section-title {
     color: #fff;
@@ -103,12 +106,12 @@ input[type=email], input[type=password], input[type=search], input[type=tel], in
     padding: 0;
 }
 .brklyn-page .breadcrumb li {
-    color: #fff;
+    color: #000;
     font-size: 0.9375em;
     position: relative;
 }
 .brklyn-page .breadcrumb a {
-    color: #fff;
+    color: #000;
     margin-right: 8px;
     text-transform: capitalize;
 }
@@ -116,7 +119,7 @@ input[type=email], input[type=password], input[type=search], input[type=tel], in
     padding-left: 4px;
 }
 .breadcrumb-item+.breadcrumb-item::before{
-	color: #fff;
+	color: #000;
 }
 .background-bg {
     background-size: cover;
@@ -127,6 +130,10 @@ input[type=email], input[type=password], input[type=search], input[type=tel], in
 .main-header {
 	box-shadow: 0 0 10px rgba(0,0,0,.2);
 	background-color: #fff;
+}
+.main-header .navbar a>img {
+    width: 180px !important;
+    height: 25px !important;
 }
 .logged-in.admin-bar .main-header.fixed-top{
 	top: 32px;
@@ -155,7 +162,7 @@ header .download-btn {
 	background-color: transparent;
 	border: 1px solid #fff;
 	border-radius: 1px;
-	color: #fff;
+	color: #262626;
 	font-size: 13px;
 	font-weight: 700;
 	line-height: 45px;
@@ -169,7 +176,14 @@ header .download-btn:hover {
 header.scrolled {
 	background-color: rgb(9 79 195);
 }
-
+header .navbar .navbar-collapse .navbar-nav li a:hover,
+header .navbar .navbar-collapse .navbar-nav li a:focus,
+header .navbar .navbar-collapse .navbar-nav li.current-menu-item a{
+	color: #662d91;
+}
+.dropdown-item.active, .dropdown-item:active{
+	background-color: #f1f1f1;
+}
 @media (min-width: 768px) {
 	header .navbar {
 		overflow:  hidden;
@@ -179,12 +193,12 @@ header.scrolled {
 		overflow: visible;
 	}
 	.navbar-collapse {
-		justify-content: center;
+		justify-content: flex-end;
 	}
 	header .navbar .navbar-collapse .navbar-nav li a {
-		line-height: 120px;
-		padding-left: 2.75rem;
-		padding-right: 2.75rem;
+		line-height: 100px;
+		padding-left: 1.25rem;
+		padding-right: 1.25rem;
 	}
 	header .navbar .navbar-collapse .navbar-nav li a:after {
 		display: none;

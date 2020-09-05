@@ -57,7 +57,6 @@
 
 
     $(document).scroll(function () {
-    	console.log('scrolled');
         var $nav = $(".main-header");
         // $nav.addClass('fixed-top');
         $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
