@@ -14,24 +14,12 @@
 
     <footer class="site-footer text-center">
         <div class="container">
-            <div class="footer-social">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-behance"></i></a>
-            </div><!-- /.footer-social -->
+            
+            <?php brooklyn_footer_social();?>
 
             <div class="copyright">
                 
-                <!--  -->
-                <?php
-					/* translators: 1: Theme name, 2: Theme author. */
-					printf( __( '&copy; %1$s - %2$s | %3$s', 'brooklyn' ), 
-						'Brooklyn', 
-						date('Y'), 
-						__('All Rights Reserved', 'brooklyn')
-					);
-				?>
+                <?php brooklyn_copyrights_text();?>
 
 				<?php printf( esc_html__( 'Developed by %1$s', 'brooklyn' ), '<a href="' . esc_url( __('https://master-addons.com/', 'brooklyn')) . '" rel="nofollow">Master Addons</a>' ); ?>
             </div><!-- /.copyright -->

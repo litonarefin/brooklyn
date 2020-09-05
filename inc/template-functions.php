@@ -112,3 +112,52 @@ function brooklyn_brand_logo(){
     <?php }
 
 }
+
+
+
+// Copyright Text
+function brooklyn_copyrights_text(){
+    $copyright_text = get_theme_mod( 'copyright_text' );
+
+    if(!empty($copyright_text)){
+        echo wp_specialchars_decode( $copyright_text );
+    } else {
+		/* translators: 1: Theme name, 2: Theme author. */
+		printf( __( '&copy; %1$s - %2$s | %3$s', 'brooklyn' ), 
+			'Brooklyn', 
+			date('Y'), 
+			__('All Rights Reserved', 'brooklyn')
+		);
+    }
+}
+
+
+
+
+
+// Header Top Social
+function brooklyn_footer_social(){
+
+    $facebook   = get_theme_mod( 'brooklyn_facebook' );
+    $twitter    = get_theme_mod( 'brooklyn_twitter' );
+    $skype      = get_theme_mod( 'brooklyn_skype' );
+    $instagram  = get_theme_mod( 'brooklyn_instagram' );
+    $dribble    = get_theme_mod( 'brooklyn_dribble' );
+    $vimeo      = get_theme_mod( 'brooklyn_vimeo' );
+
+
+    if( $twitter || $skype || $instagram || $dribble || $vimeo || $facebook ) { ?>
+
+        <div class="footer-social">
+            <?php if(!empty($facebook)){ ?><a href="<?php echo esc_url( $facebook ); ?>" target="_blank"><i class="fab fa-facebook"></i></a> <?php } ?>
+            <?php if(!empty($twitter)){ ?><a href="<?php echo esc_url( $twitter ); ?>" target="_blank"><i class="fab fa-twitter"></i></a> <?php } ?>
+            <?php if(!empty($skype)){ ?><a href="<?php echo esc_url( $skype ) ; ?>" target="_blank"><i class="fab fa-skype"></i></a> <?php } ?>
+            <?php if(!empty($instagram)){ ?><a href="<?php echo esc_url( $instagram ); ?>" target="_blank"><i class="fab fa-instagram"></i></a> <?php } ?>
+            <?php if(!empty($dribble)){ ?><a href="<?php echo esc_url( $dribble ); ?>" target="_blank"><i class="fab fa-dribbble"></i></a> <?php } ?>
+            <?php if(!empty($vimeo)){ ?><a href="<?php echo esc_url( $vimeo ); ?>" target="_blank"><i class="fab fa-vimeo"></i></a> <?php } ?>
+
+        </div>
+
+    <?php }
+
+}
