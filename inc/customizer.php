@@ -125,16 +125,16 @@ function brooklyn_customize_register( $wp_customize ) {
     	    'sanitize_callback' => 'absint'
     	) );
     	$wp_customize->add_control( 'brooklyn_blog_excerpt', array(
-    	    'label'     => __( 'Enter excerpt length', 'brooklyn' ),
-    	    'description' => __('Enter the lenght of excerpt.', 'brooklyn'),
-    	    'section'   => 'brooklyn_blog_section',
-    	    'settings'  => 'brooklyn_blog_excerpt',
-    	    'type'      => 'number',
-    	    'priority'  => 10,
-    	    'input_attrs' => array(
-	            'min' => -1,
-	            'max' => 50,
-	            'step' => 1,
+    	    'label'     		=> __( 'Enter excerpt length', 'brooklyn' ),
+    	    'description' 		=> __('Enter the lenght of excerpt.', 'brooklyn'),
+    	    'section'   		=> 'brooklyn_blog_section',
+    	    'settings'  		=> 'brooklyn_blog_excerpt',
+    	    'type'      		=> 'number',
+    	    'priority'  		=> 10,
+    	    'input_attrs' 		=> array(
+	            'min' 	=> -1,
+	            'max' 	=> 50,
+	            'step' 	=> 1,
 	        ),
     	) );
     	/*Breadcrumb Options*/
@@ -145,117 +145,117 @@ function brooklyn_customize_register( $wp_customize ) {
     	    'sanitize_callback' => 'brooklyn_sanitize_checkbox'
     	) );
     	$wp_customize->add_control( 'brooklyn_breadcrumbs', array(
-    	    'label'     => __( 'Breadcrumb Option', 'brooklyn' ),
-    	    'description' => __('Show hide breadcrumb.', 'brooklyn'),
-    	    'section'   => 'brooklyn_blog_section',
-    	    'settings'  => 'brooklyn_breadcrumbs',
-    	    'type'      => 'checkbox',
-    	    'priority'  => 10
+    	    'label'     		=> __( 'Breadcrumb Option', 'brooklyn' ),
+    	    'description' 		=> __('Show hide breadcrumb.', 'brooklyn'),
+    	    'section'   		=> 'brooklyn_blog_section',
+    	    'settings'  		=> 'brooklyn_breadcrumbs',
+    	    'type'      		=> 'checkbox',
+    	    'priority'  		=> 10
     	) );
 
 
 
 	// Footer Settings
     $wp_customize->add_section( 'footer_section' , array(
-        'title'      => esc_html__( 'Footer Settings', 'brooklyn' ),
-        'priority'   => 15,
-        'panel' 		 => 'brooklyn_panel',
+        'title'      			=> esc_html__( 'Footer Settings', 'brooklyn' ),
+        'priority'   			=> 15,
+        'panel' 		 		=> 'brooklyn_panel',
     ) );
 
-	//Social Options
-    $wp_customize->add_setting( 'brooklyn_twitter',array(
-		'sanitize_callback'     => 'sanitize_text_field',
-		'default'           	=> $default_options['brooklyn_twitter']
-	));
-    $wp_customize->add_setting( 'brooklyn_skype',array(
-    	'sanitize_callback'     => 'sanitize_text_field',
-    	'default'           	=> $default_options['brooklyn_skype']
-    ));
-    $wp_customize->add_setting( 'brooklyn_instagram',array(
-    	'sanitize_callback'    	=> 'sanitize_text_field',
-    	'default'           	=> $default_options['brooklyn_instagram']
-    ));
-    $wp_customize->add_setting( 'brooklyn_dribble',array(
-    	'sanitize_callback'     => 'sanitize_text_field',
-    	'default'           	=> $default_options['brooklyn_dribble']
-    ));
-    $wp_customize->add_setting( 'brooklyn_vimeo',array(
-    	'sanitize_callback'     => 'sanitize_text_field',
-    	'default'           	=> $default_options['brooklyn_vimeo']
-    ));
-    $wp_customize->add_setting( 'brooklyn_facebook',array(
-    	'sanitize_callback'    	=> 'sanitize_text_field',
-    	'default'           	=> $default_options['brooklyn_facebook']
-    ));
+		//Social Options
+	    $wp_customize->add_setting( 'brooklyn_twitter',array(
+			'sanitize_callback'     => 'sanitize_text_field',
+			'default'           	=> $default_options['brooklyn_twitter']
+		));
+	    $wp_customize->add_setting( 'brooklyn_skype',array(
+	    	'sanitize_callback'     => 'sanitize_text_field',
+	    	'default'           	=> $default_options['brooklyn_skype']
+	    ));
+	    $wp_customize->add_setting( 'brooklyn_instagram',array(
+	    	'sanitize_callback'    	=> 'sanitize_text_field',
+	    	'default'           	=> $default_options['brooklyn_instagram']
+	    ));
+	    $wp_customize->add_setting( 'brooklyn_dribble',array(
+	    	'sanitize_callback'     => 'sanitize_text_field',
+	    	'default'           	=> $default_options['brooklyn_dribble']
+	    ));
+	    $wp_customize->add_setting( 'brooklyn_vimeo',array(
+	    	'sanitize_callback'     => 'sanitize_text_field',
+	    	'default'           	=> $default_options['brooklyn_vimeo']
+	    ));
+	    $wp_customize->add_setting( 'brooklyn_facebook',array(
+	    	'sanitize_callback'    	=> 'sanitize_text_field',
+	    	'default'           	=> $default_options['brooklyn_facebook']
+	    ));
 
-    $wp_customize->add_setting( 'copyright_text',array(
-    	'sanitize_callback' 	=> 'sanitize_textarea_field',
-    	'default'           	=> $default_options['brooklyn_copyright_text']
-    ));
+	    $wp_customize->add_setting( 'copyright_text',array(
+	    	'sanitize_callback' 	=> 'sanitize_textarea_field',
+	    	'default'           	=> $default_options['brooklyn_copyright_text']
+	    ));
 
-    $wp_customize->add_control( 'copyright_text',
-            array(
-                'label'    => esc_html__( 'Copyright Text', 'brooklyn' ),
-                'description' => esc_html__( 'Copyright Text', 'brooklyn' ),
-                'section'  => 'footer_section',
-                'settings' => 'copyright_text',
-                'type'     => 'textarea'
-            )
-        );
+	    $wp_customize->add_control( 'copyright_text',
+	            array(
+	                'label'    => esc_html__( 'Copyright Text', 'brooklyn' ),
+	                'description' => esc_html__( 'Copyright Text', 'brooklyn' ),
+	                'section'  => 'footer_section',
+	                'settings' => 'copyright_text',
+	                'type'     => 'textarea'
+	            )
+	        );
 
-    $wp_customize->add_control( 'brooklyn_facebook',
-        array(
-            'label'    => esc_html__( 'Facebook URL', 'brooklyn' ),
-            'section'  => 'footer_section',
-            'settings' => 'brooklyn_facebook',
-            'type'     => 'text'
-        )
-    );
+	    $wp_customize->add_control( 'brooklyn_facebook',
+	        array(
+	            'label'    => esc_html__( 'Facebook URL', 'brooklyn' ),
+	            'section'  => 'footer_section',
+	            'settings' => 'brooklyn_facebook',
+	            'type'     => 'text'
+	        )
+	    );
 
-    $wp_customize->add_control( 'brooklyn_twitter',
-        array(
-            'label'    => esc_html__( 'Twitter URL', 'brooklyn' ),
-            'section'  => 'footer_section',
-            'settings' => 'brooklyn_twitter',
-            'type'     => 'text'
-        )
-    );
+	    $wp_customize->add_control( 'brooklyn_twitter',
+	        array(
+	            'label'    => esc_html__( 'Twitter URL', 'brooklyn' ),
+	            'section'  => 'footer_section',
+	            'settings' => 'brooklyn_twitter',
+	            'type'     => 'text'
+	        )
+	    );
 
-    $wp_customize->add_control( 'brooklyn_skype',
-        array(
-            'label'    => esc_html__( 'Skype URL', 'brooklyn' ),
-            'section'  => 'footer_section',
-            'settings' => 'brooklyn_skype',
-            'type'     => 'text'
-        )
-    );
+	    $wp_customize->add_control( 'brooklyn_skype',
+	        array(
+	            'label'    => esc_html__( 'Skype URL', 'brooklyn' ),
+	            'section'  => 'footer_section',
+	            'settings' => 'brooklyn_skype',
+	            'type'     => 'text'
+	        )
+	    );
 
-    $wp_customize->add_control( 'brooklyn_instagram',
-        array(
-            'label'    => esc_html__( 'Instagram URL', 'brooklyn' ),
-            'section'  => 'footer_section',
-            'settings' => 'brooklyn_instagram',
-            'type'     => 'text'
-        )
-    );
+	    $wp_customize->add_control( 'brooklyn_instagram',
+	        array(
+	            'label'    => esc_html__( 'Instagram URL', 'brooklyn' ),
+	            'section'  => 'footer_section',
+	            'settings' => 'brooklyn_instagram',
+	            'type'     => 'text'
+	        )
+	    );
 
-    $wp_customize->add_control( 'brooklyn_dribble',
-        array(
-            'label'    => esc_html__( 'Dribble URL', 'brooklyn' ),
-            'section'  => 'footer_section',
-            'settings' => 'brooklyn_dribble',
-            'type'     => 'text'
-        )
-    );
+	    $wp_customize->add_control( 'brooklyn_dribble',
+	        array(
+	            'label'    => esc_html__( 'Dribble URL', 'brooklyn' ),
+	            'section'  => 'footer_section',
+	            'settings' => 'brooklyn_dribble',
+	            'type'     => 'text'
+	        )
+	    );
 
-    $wp_customize->add_control( 'brooklyn_vimeo',
-        array(
-            'label'    => esc_html__( 'Vimeo URL', 'brooklyn' ),
-            'section'  => 'footer_section',
-            'settings' => 'brooklyn_vimeo',
-            'type'     => 'text'
-        )
-    );
+	    $wp_customize->add_control( 'brooklyn_vimeo',
+	        array(
+	            'label'    => esc_html__( 'Vimeo URL', 'brooklyn' ),
+	            'section'  => 'footer_section',
+	            'settings' => 'brooklyn_vimeo',
+	            'type'     => 'text'
+	        )
+	    );
 
 
 
