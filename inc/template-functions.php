@@ -181,3 +181,20 @@ function brooklyn_excerpt_length( $length ) {
 	}
 }
 add_filter( 'excerpt_length', 'brooklyn_excerpt_length', 999 );
+
+
+/**
+ * Brooklyn Excerpt More
+ * @since Brooklyn 1.0.0
+ *
+ * @param null
+ * @return void
+ */
+if ( !function_exists('brooklyn_excerpt_more') ) :
+function brooklyn_excerpt_more( $more ) {
+    if(!is_admin() ){
+        return '';
+    }
+}
+endif;
+add_filter('excerpt_more', 'brooklyn_excerpt_more');

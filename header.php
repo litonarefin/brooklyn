@@ -58,7 +58,9 @@
     </header><!-- /.main-header -->
 
     <?php 
-        if( !is_home() && !is_front_page()){
-            get_template_part( "blog","header" );    
+        if(!empty(get_theme_mod('brooklyn_breadcrumbs'))){
+            if( !is_home() && !is_front_page()){
+                get_template_part( "blog","header" );    
+            }        
         }
     ?>

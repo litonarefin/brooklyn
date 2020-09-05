@@ -121,7 +121,7 @@ function brooklyn_customize_register( $wp_customize ) {
     	$wp_customize->add_setting( 'brooklyn_blog_excerpt', array(
     	    'capability'        => 'edit_theme_options',
     	    'transport' 		=> 'refresh',
-    	    'default'           => $default['brooklyn_blog_excerpt'],
+    	    'default'           => $default_options['brooklyn_blog_excerpt'],
     	    'sanitize_callback' => 'absint'
     	) );
     	$wp_customize->add_control( 'brooklyn_blog_excerpt', array(
@@ -137,6 +137,23 @@ function brooklyn_customize_register( $wp_customize ) {
 	            'step' => 1,
 	        ),
     	) );
+    	/*Breadcrumb Options*/
+    	$wp_customize->add_setting( 'brooklyn_breadcrumbs', array(
+    	    'capability'        => 'edit_theme_options',
+    	    'transport' 		=> 'refresh',
+    	    'default'           => $default_options['brooklyn_breadcrumbs'],
+    	    'sanitize_callback' => 'brooklyn_sanitize_checkbox'
+    	) );
+    	$wp_customize->add_control( 'brooklyn_breadcrumbs', array(
+    	    'label'     => __( 'Breadcrumb Option', 'brooklyn' ),
+    	    'description' => __('Show hide breadcrumb.', 'brooklyn'),
+    	    'section'   => 'brooklyn_blog_section',
+    	    'settings'  => 'brooklyn_breadcrumbs',
+    	    'type'      => 'checkbox',
+    	    'priority'  => 10
+    	) );
+
+
 
 	// Footer Settings
     $wp_customize->add_section( 'footer_section' , array(
