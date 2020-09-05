@@ -9,14 +9,11 @@ if ( !function_exists('brooklyn_default_theme_options') ) :
     function brooklyn_default_theme_options() {
 
         $default_theme_options = array(
-        	'brooklyn-read-more-text'  		=> esc_html__('Read More','brooklyn'), 
-        	'brooklyn-blog-meta'       		=> 1, 
-        	'brooklyn-blog-image'      		=> 1, 
-        	'brooklyn-blog-full-image' 		=> 0, 
-        	'brooklyn-blog-excerpt'    		=> 20,
-            'brooklyn-copyright-text'  		=> __('&copy; 2020 All Rights Reserved','brooklyn'),
-            'brooklyn-breadcrumb-option'	=> 1, 
-            'brooklyn-social-icons'    		=> 0,
+        	'brooklyn_read_more_text'  		=> esc_html__('Read More','brooklyn'), 
+        	'brooklyn_blog_meta'       		=> 1, 
+        	'brooklyn_blog_excerpt'    		=> 20,
+            'brooklyn_copyright_text'  		=> __('&copy; 2020 All Rights Reserved','brooklyn'),
+            'brooklyn_breadcrumbs'			=> 1, 
             'brooklyn_facebook'    			=> '#',
             'brooklyn_twitter'    			=> '#',
             'brooklyn_skype'    			=> '#',
@@ -60,8 +57,94 @@ function brooklyn_customize_register( $wp_customize ) {
 
 	$default_options = brooklyn_default_theme_options();
 
+	$wp_customize->add_section( 'theme_detail', array(
+        'title'    => __( 'About Theme', 'brooklyn' ),
+        'priority' => 9
+    ) );
+
+    
+    $wp_customize->add_setting( 'upgrade_text', array(
+        'default' => '',
+        'sanitize_callback' => '__return_false'
+    ) );
+
+
+    $wp_customize->add_panel( 'brooklyn_panel', array(
+        'priority' => 10,
+        'capability' => 'edit_theme_options',
+        'title' => __( 'Brooklyn Theme Options', 'brooklyn' ),
+    ) );
+
+
+
+	/*Blog Page Options*/
+	$wp_customize->add_section( 'brooklyn_blog_section', array(
+	    'priority'       => 10,
+	    'capability'     => 'edit_theme_options',
+	    'theme_supports' => '',
+	    'title'          => __( 'Blog Settings', 'brooklyn' ),
+	    'panel' 		 => 'brooklyn_panel',
+	) );
+    	/*Read More Text*/
+    	$wp_customize->add_setting( 'brooklyn_read_more_text', array(
+    	    'capability'        => 'edit_theme_options',
+    	    'transport' 		=> 'refresh',
+    	    'default'           => $default_options['brooklyn_read_more_text'],
+    	    'sanitize_callback' => 'sanitize_text_field'
+    	) );
+    	$wp_customize->add_control( 'brooklyn_read_more_text', array(
+    	    'label'     => __( 'Read More Text', 'brooklyn' ),
+    	    'description' => __('Enter Your Custom Read More Text', 'brooklyn'),
+    	    'section'   => 'brooklyn_blog_section',
+    	    'settings'  => 'brooklyn_read_more_text',
+    	    'type'      => 'text',
+    	    'priority'  => 10
+    	) );
+    	/*Meta Fields*/
+    	$wp_customize->add_setting( 'brooklyn_blog_meta', array(
+    	    'capability'        => 'edit_theme_options',
+    	    'transport' 		=> 'refresh',
+    	    'default'           => $default_options['brooklyn_blog_meta'],
+    	    'sanitize_callback' => 'brooklyn_sanitize_checkbox'
+    	) );
+
+    	$wp_customize->add_control( 'brooklyn_blog_meta', array(
+    	    'label'     => __( 'Show Blog Meta', 'brooklyn' ),
+    	    'description' => __('Check to hide the date, category, tags etc on blog page.', 'brooklyn'),
+    	    'section'   => 'brooklyn_blog_section',
+    	    'settings'  => 'brooklyn_blog_meta',
+    	    'type'      => 'checkbox',
+    	    'priority'  => 10
+    	) );
+
+    	/*Excerpt Length*/
+    	$wp_customize->add_setting( 'brooklyn_blog_excerpt', array(
+    	    'capability'        => 'edit_theme_options',
+    	    'transport' 		=> 'refresh',
+    	    'default'           => $default['brooklyn_blog_excerpt'],
+    	    'sanitize_callback' => 'absint'
+    	) );
+    	$wp_customize->add_control( 'brooklyn_blog_excerpt', array(
+    	    'label'     => __( 'Enter excerpt length', 'brooklyn' ),
+    	    'description' => __('Enter the lenght of excerpt.', 'brooklyn'),
+    	    'section'   => 'brooklyn_blog_section',
+    	    'settings'  => 'brooklyn_blog_excerpt',
+    	    'type'      => 'number',
+    	    'priority'  => 10,
+    	    'input_attrs' => array(
+	            'min' => -1,
+	            'max' => 50,
+	            'step' => 1,
+	        ),
+    	) );
 
 	// Footer Settings
+    $wp_customize->add_section( 'footer_section' , array(
+        'title'      => esc_html__( 'Footer Settings', 'brooklyn' ),
+        'priority'   => 15,
+        'panel' 		 => 'brooklyn_panel',
+    ) );
+
 	//Social Options
     $wp_customize->add_setting( 'brooklyn_twitter',array(
 		'sanitize_callback'     => 'sanitize_text_field',
@@ -88,12 +171,10 @@ function brooklyn_customize_register( $wp_customize ) {
     	'default'           	=> $default_options['brooklyn_facebook']
     ));
 
-    $wp_customize->add_section( 'footer_section' , array(
-            'title'      => esc_html__( 'Footer Settings', 'brooklyn' ),
-            'priority'   => 30,
-        ) );
-    $wp_customize->add_setting( 'copyright_text',array('sanitize_callback' => 'sanitize_textarea_field'));
-
+    $wp_customize->add_setting( 'copyright_text',array(
+    	'sanitize_callback' 	=> 'sanitize_textarea_field',
+    	'default'           	=> $default_options['brooklyn_copyright_text']
+    ));
 
     $wp_customize->add_control( 'copyright_text',
             array(

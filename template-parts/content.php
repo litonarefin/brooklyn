@@ -50,8 +50,11 @@
 		<footer class="entry-footer">
 			<div class="post-bottom">
 				<?php 
-					brooklyn_blog_post_author_avatar();
-					brooklyn_entry_footer();
+					if(!empty(get_theme_mod('brooklyn_blog_meta'))){
+						brooklyn_blog_post_author_avatar();
+						brooklyn_entry_footer();	
+					}
+					
 					if(!is_single()){ 
 						brooklyn_read_more();
 					}

@@ -38,13 +38,18 @@ add_action( 'wp_head', 'brooklyn_pingback_header' );
 
 
 // Read More
-function brooklyn_read_more(){ ?>
+function brooklyn_read_more(){ 
+	$read_more = get_theme_mod( 'brooklyn_read_more_text' );
+	if(!empty($read_more)){ ?>
+		<a href="<?php the_permalink();?>" class="btn read-more">
+			<?php echo wp_specialchars_decode($read_more); ?>
+		</a>
+	<?php }else{ ?>
 	<a href="<?php the_permalink();?>" class="btn read-more">
 		<?php echo esc_html__('Read more', 'brooklyn');?>
 	</a>
 <?php }
-
-
+}
 
 
 
@@ -161,3 +166,18 @@ function brooklyn_footer_social(){
     <?php }
 
 }
+
+
+
+/**
+ * Brooklyn Excerpt Length
+ * @since Brooklyn 1.0.0
+ *
+ */
+function brooklyn_excerpt_length( $length ) {
+	if(!is_admin () ){
+		$excerpt_length = absint(get_theme_mod('brooklyn_blog_excerpt'));
+		return $excerpt_length;
+	}
+}
+add_filter( 'excerpt_length', 'brooklyn_excerpt_length', 999 );
