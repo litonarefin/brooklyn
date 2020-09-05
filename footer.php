@@ -22,32 +22,23 @@
             </div><!-- /.footer-social -->
 
             <div class="copyright">
-                <!-- © 2020 - Broklyn | All Rights Reservs -->
+                
+                <!--  -->
                 <?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'brooklyn' ), 'brooklyn', '<a href="https://master-addons.com">Liton Arefin</a>' );
+					/* translators: 1: Theme name, 2: Theme author. */
+					printf( __( '&copy; %1$s - %2$s | %3$s', 'brooklyn' ), 
+						'Brooklyn', 
+						date('Y'), 
+						__('All Rights Reserved', 'brooklyn')
+					);
 				?>
+
+				<?php printf( esc_html__( 'Developed by %1$s', 'brooklyn' ), '<a href="' . esc_url( __('https://master-addons.com/', 'brooklyn')) . '" rel="nofollow">Master Addons</a>' ); ?>
             </div><!-- /.copyright -->
         </div>
     </footer><!-- /.site-footer -->
 
 
-
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'brooklyn' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'brooklyn' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'brooklyn' ), 'brooklyn', '<a href="https://master-addons.com">Liton Arefin</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

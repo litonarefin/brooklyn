@@ -914,6 +914,10 @@ footer.site-footer {
 .copyright {
 	margin-bottom: .5rem;
 }
+.copyright a{
+	color: #dcbdf3;
+}
+
 
 
 
