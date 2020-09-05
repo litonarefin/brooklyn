@@ -67,6 +67,12 @@ if ( ! function_exists( 'brooklyn_entry_footer' ) ) :
 					printf( '<span class="cat-links"><i class="icon-tag icons"></i> ' . esc_html__( ' %1$s', 'brooklyn' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				}
 
+				/* translators: used between list items, there is a space after the comma */
+				$tags_list = get_the_tag_list( '', esc_html__( ', ', 'brooklyn' ) );
+				if ( $tags_list ) {
+					printf( '<span class="tags-links"><i class="icon-tag icons"></i> ' . esc_html__( ' %1$s', 'brooklyn' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+				}
+
 				if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 					echo '<span class="comments-link"><i class="icon-bubbles icons"></i> ';
 					comments_popup_link( esc_html__( 'Leave a Comment', 'brooklyn' ), esc_html__( '1 Comment', 'brooklyn' ), esc_html__( '% Comments', 'brooklyn' ) );
