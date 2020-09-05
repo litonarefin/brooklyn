@@ -39,7 +39,7 @@
 
                 <div class="collapse navbar-collapse" id="main-menu">
                     <?php
-                        $args = array(
+                      wp_nav_menu(array(
                             'theme_location'    => 'main-menu',
                             'depth'             => 3,
                             'container'         => false,
@@ -48,8 +48,7 @@
                             'menu_class'        => 'navbar-nav',
                             'walker'            => new WP_Bootstrap_Navwalker(),
                             'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-                        );
-                      wp_nav_menu($args);
+                        ));
                     ?>
                 </div>
 

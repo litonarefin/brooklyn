@@ -30,7 +30,7 @@ if ( ! function_exists( 'brooklyn_setup' ) ) :
 		 * If you're building a theme based on Brooklyn, use a find and replace
 		 * to change 'brooklyn' to the name of your theme in all the template files.
 		 */
-		load_theme_textdomain( 'brooklyn', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'brooklyn' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -190,7 +190,9 @@ require get_template_directory() . '/inc/custom-header.php';
 require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
-require_once get_template_directory().'/inc/class-wp-bootstrap-navwalker.php';
+if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
+	require_once get_template_directory().'/inc/class-wp-bootstrap-navwalker.php';
+}
 require get_template_directory()  . '/inc/breadcrumb-trail.php';
 
 if ( defined( 'JETPACK__VERSION' ) ) { 
