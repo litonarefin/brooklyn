@@ -89,16 +89,13 @@ if(!( function_exists('brooklyn_pagination') )){
 				echo '<li class="page-item"><a href="'.get_pagenum_link($pages).'" class="page-link next">' . esc_html__('Next','brooklyn') . ' <i class="fa fa-arrow-right"></i></a></li>';
 			}
 
-
 			echo "</ul></nav>";
 		}
 	}
 }
 
 
-
-
-
+// Navbar Brand Logo
 function brooklyn_brand_logo(){ 
 
     if( function_exists( 'the_custom_logo' ) && has_custom_logo() ){

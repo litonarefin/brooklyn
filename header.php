@@ -37,7 +37,6 @@
                     </span>
                 </button>
 
-
                 <div class="collapse navbar-collapse" id="main-menu">
                     <?php
                         $args = array(
@@ -53,14 +52,13 @@
                       wp_nav_menu($args);
                     ?>
                 </div>
-<!-- 
-                <div class="menu-download-btn float-right">
-                    <button class="btn download-btn">Download Now</button>
-                </div> -->
-                <!-- /.menu-download-btn -->
 
             </nav>
         </div><!-- /.container -->
     </header><!-- /.main-header -->
 
-    <?php get_template_part( "blog","header" );?>
+    <?php 
+        if( !is_home() && !is_front_page()){
+            get_template_part( "blog","header" );    
+        }
+    ?>
